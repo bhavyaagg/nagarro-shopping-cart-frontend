@@ -5,13 +5,13 @@
     <div><b>Rs. {{price}}</b></div>
     <div class="row">
       <div class="col">
-        <button v-on:click="incProduct('{{productId}}')" class="btn btn-primary">+</button>
+        <button v-on:click="incProduct(productId)" class="btn btn-primary">+</button>
       </div>
       <div class="col d-flex align-items-center justify-content-center">
-        {{(qty?qty.qty:0)}}
+        {{(qtyObj?qtyObj.qty:0)}}
       </div>
       <div class="col">
-        <button v-on:click="decProduct('{{productId}}')" class="btn btn-primary">-</button>
+        <button v-on:click="decProduct(productId)" class="btn btn-primary">-</button>
       </div>
     </div>
   </div>
@@ -27,12 +27,14 @@
       manufacturer: String,
       price: Number,
       productId: Number,
-      qty: Number
+      qtyObj: Object
     },
     methods: {
-      incProduct: function () {
-        axios.post('http://localhost:2678/api/products', {
-          name: window.localS
+      incProduct: function (productId) {
+        axios.post('http://localhost:2678/api/cart/incProduct', {
+          name: window.localStorage.getItem("name"),
+          password: window.localStorage.getItem("password"),
+          productId: productId
         })
       }
     }
