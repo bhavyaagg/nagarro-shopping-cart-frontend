@@ -36,6 +36,20 @@
           password: window.localStorage.getItem("password"),
           productId: productId
         })
+      },
+      decProduct: function (productId) {
+        axios.post('http://localhost:2678/api/cart/decProduct', {
+          name: window.localStorage.getItem("name"),
+          password: window.localStorage.getItem("password"),
+          productId: productId
+        }).then((data) => {
+          if (data.success) {
+            window.location.refresh();
+          } else{
+            // eslint-disable-next-line
+            console.log("Error")
+          }
+        })
       }
     }
   }
