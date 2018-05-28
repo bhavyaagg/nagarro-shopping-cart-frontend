@@ -2,9 +2,9 @@
   <b-container>
     <b-row>
       <product v-for="productItem in products" :key="productItem.id"
-      :name="productItem.name" :manufacturer="productItem.manufacturer"
-      :price="productItem.price" :productId="productItem.id"
-      ></product>
+               :name="productItem.name" :manufacturer="productItem.manufacturer"
+               :price="productItem.price" :productId="productItem.id"
+               :qty="productItem.cart"></product>
     </b-row>
   </b-container>
 
@@ -27,6 +27,8 @@
     created() {
       axios.get('http://localhost:2678/api/products').then((response) => {
         this.products = response.data
+        //eslint-disable-next-line
+        console.log(this.products)
       })
     }
 

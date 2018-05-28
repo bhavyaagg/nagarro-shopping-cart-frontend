@@ -1,27 +1,40 @@
 <template>
   <div class="col-4 card p-3">
-    <h4 class="product-name">{{name}}</h4>
-    <div class="product-manufacturer">{{manufacturer}}</div>
+    <h4>{{name}}</h4>
+    <div>{{manufacturer}}</div>
+    <div><b>Rs. {{price}}</b></div>
     <div class="row">
-      <div class="col m-3 p-3">
-        <b>Rs. {{price}}</b>
+      <div class="col">
+        <button v-on:click="incProduct('{{productId}}')" class="btn btn-primary">+</button>
       </div>
-      <button v-on:click="addProduct('{{productId}}')" class="col btn btn-primary m-3">Buy</button>
+      <div class="col d-flex align-items-center justify-content-center">
+        {{(qty?qty.qty:0)}}
+      </div>
+      <div class="col">
+        <button v-on:click="decProduct('{{productId}}')" class="btn btn-primary">-</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     name: "Product",
     props: {
       name: String,
       manufacturer: String,
       price: Number,
-      productId: String
+      productId: Number,
+      qty: Number
     },
     methods: {
-    
+      incProduct: function () {
+        axios.post('http://localhost:2678/api/products', {
+          name: window.localS
+        })
+      }
     }
   }
 </script>
