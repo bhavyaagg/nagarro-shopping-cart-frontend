@@ -1,10 +1,9 @@
 <template>
   <div id="app">
     <h1>Shopping Cart</h1>
-    <router-link :to="'addProduct'">Add Product</router-link>
-    <router-link :to="'addProduct'">S</router-link>
-    <router-link :to="'addProduct'">S</router-link>
-    <router-link :to="'addProduct'">S</router-link>
+    <router-link class="tab" :to="'user'">Login</router-link>
+    <router-link class="tab" :to="'viewProduct'">View Products</router-link>
+    <router-link class="tab" :to="'addProduct'">Add Product</router-link>
     <br/>
     <router-view></router-view>
   </div>
@@ -25,6 +24,10 @@
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+  }
+  
+  .tab {
+    margin: 10px
   }
 
 </style>
