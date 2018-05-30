@@ -60,6 +60,23 @@
             document.getElementById('errorRow').innerText = data.msg;
           }
         })
+      },
+      submitRegister: function () {
+        let name = this.name;
+        let password = this.password
+        axios.post('http://localhost:2678/api/users/register', {
+          name: name,
+          password: password
+        }).then((response) => {
+          let data = response.data;
+          if (data.success) {
+            window.localStorage.setItem("name", name);
+            window.localStorage.setItem("password", password);
+            window.location.replace('/viewProducts')
+          } else {
+            document.getElementById('errorRow').innerText = data.msg;
+          }
+        })
       }
     }
   }

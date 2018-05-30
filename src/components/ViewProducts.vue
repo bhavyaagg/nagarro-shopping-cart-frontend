@@ -31,11 +31,15 @@
       let name = window.localStorage.getItem("name")
       let password = window.localStorage.getItem("password");
       if (!name || !password) {
+        // eslint-disable-next-line
+        console.log(2)
         document.getElementById("errorRow").innerText = "Please Login First"
         return;
       }
       axios.get(`http://localhost:2678/api/products?name=${name}&password=${password}`).then((response) => {
         this.products = response.data
+        //eslint-disable-next-line
+        console.log(this.products)
       })
     }
 

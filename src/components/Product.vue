@@ -7,7 +7,7 @@
       <div class="col">
         <button v-on:click="incProduct(productId)" class="btn btn-primary">+</button>
       </div>
-      <div class="col d-flex align-items-center justify-content-center">
+      <div v-bind:id="productId" class="col d-flex align-items-center justify-content-center">
         {{(qtyObj?qtyObj.qty:0)}}
       </div>
       <div class="col">
@@ -35,6 +35,11 @@
           name: window.localStorage.getItem("name"),
           password: window.localStorage.getItem("password"),
           productId: productId
+        }).then((response) => {
+          if (response.data.success) {
+            let el = document.getElementById(productId);
+            el.innerText = parseInt(el.innerText) + 1;
+          }
         })
       },
       decProduct: function (productId) {
@@ -43,9 +48,10 @@
           password: window.localStorage.getItem("password"),
           productId: productId
         }).then((data) => {
-          if (data.success) {
-            window.location.refresh();
-          } else{
+          if (data.data.success) {
+            let el = document.getElementById(productId);
+            el.innerText = parseInt(el.innerText) - 1;
+          } else {
             // eslint-disable-next-line
             console.log("Error")
           }
