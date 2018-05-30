@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <h1>Shopping Cart</h1>
-    <router-link class="tab" :to="'user'">Login</router-link>
-    <router-link class="tab" :to="'viewProduct'">View Products</router-link>
+    <router-link class="tab" :to="'user'">Login/Register</router-link>
+    <router-link class="tab" :to="'viewProducts'">View Products</router-link>
     <router-link class="tab" :to="'addProduct'">Add Product</router-link>
     <br/>
     <router-view></router-view>
